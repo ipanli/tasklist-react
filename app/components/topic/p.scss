@@ -1,0 +1,59 @@
+
+.rct-pagination-wrap{
+    padding-top: 20px;
+    text-align: center;
+    color: #999;
+    line-height: 30px;
+    ul{
+        display: inline-block;
+    }
+
+    form{
+        display: inline-block;
+        margin: 0 20px;
+        input{
+            height: 30px;
+            width: 30px;
+            border: 1px solid #9e9e9e;
+            text-align: center;
+            color: #999;
+        }
+        i{
+            font-size: 14px;
+            padding:0  10px;
+            font-style: normal;
+        }
+        span{
+            margin-left: 10px;
+            height: 30px;
+            display: inline-block;
+            border: 1px solid #9e9e9e;
+            padding: 0 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    }
+}
+ .rct-pagination{
+    li{
+        display: inline-block;
+        padding: 0 10px;
+        margin: 0 2px 0 4px;
+        vertical-align: middle;
+        font-size: 14px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #9e9e9e;
+        border: 1px solid #9e9e9e;
+        cursor: pointer;
+        &.disabled{
+            display: none;
+        }
+        &.active{
+            color: #ff6e6e;
+            cursor: none;
+            border: 1px solid #ff6e6e;
+        }
+    }
+}
