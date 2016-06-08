@@ -3,18 +3,17 @@
  */
 
 
-function minAjax(config) {
+export function minAjax(config) {
 
     function initXMLhttp() {
 
-    var xmlhttp;
-    if (window.XMLHttpRequest) {
-        //code for IE7,firefox chrome and above
-        xmlhttp = new XMLHttpRequest();
-    } else {
-        //code for Internet Explorer
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            //code for Internet Explorer
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
 
         return xmlhttp;
     }

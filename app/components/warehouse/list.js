@@ -11,8 +11,7 @@ import classnames                       from 'classnames';
 import cssModules                       from 'react-css-modules';
 import style                            from './styles.styl';
 
-
-
+import { minAjax }                      from '../ajax/index';
 
 class List extends Component {
   constructor (props) {
@@ -37,7 +36,7 @@ class List extends Component {
     let gitusername = this.props.state.gitusername
     let gitreponame = this.props.state.gitreponame
 
-     $.ajax({
+     minAjax({
             url: "/api/remindedtask",
             type: 'POST',
             data: {
