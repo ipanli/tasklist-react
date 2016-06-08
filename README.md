@@ -10,10 +10,11 @@ React Redux Boilerplate with sGrid, Webpack and Hot Module Replacement configura
 ## Router 路由系统
 
 1. 以仓库为基准的路由系统
-```
-/warehouse/组织名或用户名/仓库名/分页数
-/warehouse/SoftwareTest/Panli/2
-```
+
+  ```
+  /warehouse/组织名或用户名/仓库名/分页数
+  /warehouse/SoftwareTest/Panli/2
+  ```
 
 This is a simple React boilerplate with:
 
