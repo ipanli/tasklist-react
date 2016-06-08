@@ -35,7 +35,7 @@ class List extends Component {
                 this.setState({
                     data: data
                 });
-                console.log(data)
+              
                 
             })
             .catch((ex) => {

@@ -9,7 +9,7 @@ var productionPlugin = new webpack.DefinePlugin({
   }
 });
 
-var cssExtractPlugin = new ExtractTextPlugin('styles.css');
+var cssExtractPlugin = new ExtractTextPlugin('webpackstyles.css');
 
 config.devtool = '';
 config.output.pathinfo = false;

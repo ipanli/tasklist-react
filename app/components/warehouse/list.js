@@ -12,6 +12,8 @@ import cssModules                       from 'react-css-modules';
 import style                            from './styles.styl';
 
 
+
+
 class List extends Component {
   constructor (props) {
     super(props);
@@ -21,12 +23,17 @@ class List extends Component {
     // this.setInput = this.setInput.bind(this);
   }
 
+  noOpen(){
+
+      alert("暂时未开通,敬请期待(☆▽☆)")
+  }
+
   handleChange (item) {
-    console.log(item)
+    
 
     let iNumber = item.number
-    let sendUser = item.user.full_name
-    let receiveUser = item.assignee.full_name
+    let sendUser = item.user.username
+    let receiveUser = item.assignee.username
     let gitusername = this.props.state.gitusername
     let gitreponame = this.props.state.gitreponame
 
@@ -53,21 +60,32 @@ class List extends Component {
         });
 
 
-    // fetch('/api/remindedtask', {
-    //     method: 'post',
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //         iNumber: iNumber,
-    //         sendUser: sendUser,
-    //         receiveUser: receiveUser,
-    //         gitusername: gitusername,
-    //         gitreponame: gitreponame,
+//     let result = fetch('/api/remindedtask', {
+//         method: 'post',
+//         body: JSON.stringify({
+//             iNumber: iNumber,
+//             sendUser: sendUser,
+//             receiveUser: receiveUser,
+//             gitusername: gitusername,
+//             gitreponame: gitreponame,
 
-    //     })
-    // })
+//         })
+//     }).then(function(response) {
+//     return response.json()
+//   }).then(function(json) {
+//      if (json == 1) {
+//                alert("提醒发送失败，发送人不能为空");
+//         } else if (json == 2) {
+//             alert("提醒发送失败，创建人不能为空。");
+//         } else if (json == 3) {
+//             alert("已向" + receiveUser + "成功发送提醒。");
+//         }
+//   }).catch(function(ex) {
+//     console.log('parsing failed', ex)
+//  })
+
+
+
 
   }
 
@@ -93,7 +111,7 @@ class List extends Component {
                     <tr className="left aligned" key={index}>
                         <td key={item.number}>
                             <div className="ui ribbon label"></div># {item.number}</td>
-                        <td><a href={item.number} target="_blank">{item.title}</a></td>
+                        <td><a href={`http://github.panli.com/${this.props.state.gitusername}/${this.props.state.gitreponame}/issues/${item.number}`} target="_blank">{item.title}</a></td>
                         <td> {item.state == 'open' ? '开启中' :'已关闭'} </td>
                         <td>{item.user.full_name}</td>
                         <td>{item.assignee.full_name}</td>
@@ -102,7 +120,7 @@ class List extends Component {
                             <div className="ui mini buttons">
                                 <button  onClick={this.handleChange.bind(this, item)} className="ui mini positive button"  > 提醒</button>
                                 <div className="or"></div>
-                                <button className="ui mini button" onclick="alert('此功能尚未开通。。。')">关闭</button>
+                                <button onClick={this.noOpen.bind(this)} className="ui mini button" >关闭</button>
                             </div>
                         </td>
                     </tr>

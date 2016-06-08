@@ -15,8 +15,8 @@ module.exports = {
   output: {
     pathinfo: true,
     path: path.resolve(__dirname, 'public'),
-    filename: 'bundle.js',
-    publicPath: '/'
+    filename: 'bundle.[hash].js',
+    publicPath: '/html/'
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -13,6 +13,7 @@ import 'whatwg-fetch';
 
 import './p.scss';
 
+import '../ajax/index.js';
 
 
 
@@ -30,6 +31,7 @@ class Topic extends React.Component {
             gitreponame:repo,
             pageid:pid,
             show:false,
+            load:1,
             warJson:[],
             data: []
         }        
@@ -47,10 +49,17 @@ class Topic extends React.Component {
                 return response.json();
             })
             .then((data) => {
-                this.setState({
-                    total:900,
-                    data: data
-                });
+                if(data.length > 0){
+                    this.setState({
+                        data: data,
+                        load:2
+                    });
+                }else{
+                    this.setState({
+                        load:0
+                    });
+                }
+                
                 
             })
             .catch((ex) => {
@@ -68,7 +77,6 @@ class Topic extends React.Component {
     }
     onSelect (data) {
 
-        console.log(data);
 
         this.setState({ 
             pageid:1,
@@ -76,8 +84,6 @@ class Topic extends React.Component {
             gitreponame:data.name,
             show:false
          });
-
-        
 
 
         const path = `/warehouse/${data.user}/${data.name}/1`
@@ -92,7 +98,7 @@ class Topic extends React.Component {
 
     onShow (data) {
         this.setState({
-        show: !data
+            show: !data
         });
 
     }
@@ -101,9 +107,6 @@ class Topic extends React.Component {
         this.setState({ 
             pageid:index
          });
-        // let Id =  this.state.Id;
-        // let gitusername = this.props.params.gitusername;
-        // let gitreponame = this.props.params.gitreponame;
 
         let gitusername = this.state.gitusername;
         let gitreponame = this.state.gitreponame;
@@ -118,11 +121,38 @@ class Topic extends React.Component {
     }
  
   render() {
+      let Loading;
+
+      if(this.state.load ==1){
+          Loading = () => {
+              return(
+                  <div className="loading-box">
+                    <div className="double-bounce1"></div>
+                    <div className="double-bounce2"></div>
+                  </div>
+                
+              )
+            }
+      }else if(this.state.load  == 0){
+          Loading = () => {
+              return(
+                  <div>
+                    加载失败,没有数据了哦
+                  </div>
+              )
+          }
+      }else{
+          Loading = () => {
+              
+          } 
+      }
+
+
     return (
       <div>
         <Select onSelect={this.onSelect.bind(this)} onShow={this.onShow.bind(this)} onName={this.state.gitreponame} show={this.state.show} />
         <div className="ui segment">
-            {this.state.data.length > 0 ? '' : <div >加载中...</div>}
+             {Loading()}
             <div >
             {this.state.data.map((item, index) =>
             <div key={index}>
