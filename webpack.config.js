@@ -20,7 +20,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Panli 专题代购列表页 React 重构!',
+      title: '!',
       template: './index_template.html',
       inject: 'body'
     }),
