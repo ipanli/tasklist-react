@@ -151,7 +151,7 @@ class Topic extends React.Component {
     return (
       <div>
         <Select onSelect={this.onSelect.bind(this)} onShow={this.onShow.bind(this)} onName={this.state.gitreponame} show={this.state.show} />
-        <div className="ui segment">
+        <div styleName="appbox">
              {Loading()}
             <div >
             {this.state.data.map((item, index) =>
